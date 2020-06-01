@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Android_TDD_Learning_Java"
