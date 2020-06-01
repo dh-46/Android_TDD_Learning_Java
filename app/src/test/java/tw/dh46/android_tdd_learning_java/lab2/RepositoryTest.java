@@ -14,12 +14,17 @@ import org.mockito.Mockito;
  * 但是為了增加測試的速度與效率，我們希望能夠直接在JVM上執行UnitTest。
  * 所以必須使用Mockito框架
  * 測試步驟：
+ *
  * 0. 新增 Mockito Framework
  * 1. Mock Context、SharePreference
  * 2. 使用when thenReturn 讓Production code 呼叫sharedPreference時回傳模擬的物件
  * 3. 執行被測試物件：Activity 呼叫repository.saveUserId()
  * 4. 使用verify method，驗證模擬物件是否有呼叫putString，並傳入正確的參數
  * 5. 檢查SharedPreference是否有呼叫commit
+ *
+ * --------------------------------------------------
+ * TestCode --測試--> Repository.saveUserId() (SUT)
+ *          --驗證是否有正確與mock互動--> mock(SharedPreference) (MOCK)
  */
 public class RepositoryTest {
 
