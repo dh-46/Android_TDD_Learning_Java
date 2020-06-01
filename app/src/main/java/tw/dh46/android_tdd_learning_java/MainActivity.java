@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import tw.dh46.android_tdd_learning_java.lab1.RegisterVerify;
+import tw.dh46.android_tdd_learning_java.lab2.Repository;
 
 /**
  * 這裡有一個範例是註冊的功能。輸入帳號及密碼後可註冊為會員。
@@ -76,9 +77,14 @@ public class MainActivity extends AppCompatActivity {
         boolean isPasswordVerified = registerVerify.isPasswordVerify(password);
 
         if (isAccountVerified && isPasswordVerified) {
+
+            // Lab2: 註冊成功 儲存ID
+            Repository repository = new Repository(this);
+            repository.saveUserId(account);
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
                     .setTitle("提示")
-                    .setMessage("登入成功");
+                    .setMessage("註冊成功");
             builder.show();
         } else {
             if (!isAccountVerified) {
